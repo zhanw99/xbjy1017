@@ -38,15 +38,16 @@ public interface LoginService  {
      * @param name 姓名
      * @return List<UserMax>
      */
-    public List<UserMax> UserListQuery(String account,String name,int pageNum,int pageSize);
+//    public List<UserMax> UserListQuery(String account,String name,int pageNum,int pageSize);
+
 
     /**
-     * 分页查询
-     * @param pageNum 当前页
-     * @param pageSize 每页显示个数
+     *
      * @param account 账号
      * @param name 姓名
-     * @return
+     * @param pageNum 当前页
+     * @param pageSize 每页显示个数
+     * @return Page
      */
     public Page findUserService(String account,String name,int pageNum,int pageSize);
 }

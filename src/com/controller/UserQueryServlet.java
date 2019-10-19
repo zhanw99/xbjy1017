@@ -18,19 +18,8 @@ public class UserQueryServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LoginService loginService = new LoginServiceImpl();
-//        模糊查询
         String account = req.getParameter("account");
         String name = req.getParameter("name");
-//        List<UserMax> userMaxes = loginService.UserListQuery(account, name);
-//        for(UserMax userMax:userMaxes){
-//            System.out.println(userMax);
-//        }
-//        req.getSession().setAttribute("list", userMaxes);
-
-        System.out.println(account);
-        System.out.println(name);
-
-
         //分页
         String pageNum1 = req.getParameter("pageNum");//当前页
         int pageNum = 0;
@@ -41,14 +30,13 @@ public class UserQueryServlet extends HttpServlet {
             pageNum = Integer.valueOf(pageNum1);
             System.out.println("number"+pageNum);
         }
-        System.out.println("****");
         //每页显示的记录数
         int pageSize = 5;
         Page userService = loginService.findUserService(account,name,pageNum,pageSize);
 
         req.setAttribute("page",userService);
         System.out.println(userService);
-        req.getRequestDispatcher("/html/user_list.jsp").forward(req, resp);
 
+        req.getRequestDispatcher("/html/user_list.jsp").forward(req, resp);
     }
 }
